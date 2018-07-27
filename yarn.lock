@@ -2,10 +2,6 @@
 # yarn lockfile v1
 
 
-"@types/dragula@^2.1.33":
-  version "2.1.33"
-  resolved "http://registry.npm.taobao.org/@types/dragula/download/@types/dragula-2.1.33.tgz#63a694bd8a5fb7bfa570778a12a069be98462919"
-
 "@types/fs-extra@4.0.0":
   version "4.0.0"
   resolved "http://registry.npm.taobao.org/@types/fs-extra/download/@types/fs-extra-4.0.0.tgz#1dd742ad5c9bce308f7a52d02ebc01421bc9102f"
@@ -19,20 +15,6 @@
 "@types/highlight.js@9.1.8":
   version "9.1.8"
   resolved "http://registry.npm.taobao.org/@types/highlight.js/download/@types/highlight.js-9.1.8.tgz#d227f18bcb8f3f187e16965f2444859a04689758"
-
-"@types/jquery@^3.3.5":
-  version "3.3.5"
-  resolved "http://registry.npm.taobao.org/@types/jquery/download/@types/jquery-3.3.5.tgz#75cfec8c5ee38355d14296ada7e7e2fb8bd3ac2f"
-
-"@types/lodash-es@^4.17.0":
-  version "4.17.1"
-  resolved "http://registry.npm.taobao.org/@types/lodash-es/download/@types/lodash-es-4.17.1.tgz#56745e5411558362aeca31def918f88f725dd29d"
-  dependencies:
-    "@types/lodash" "*"
-
-"@types/lodash@*":
-  version "4.14.113"
-  resolved "http://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.113.tgz#1d1cb063f17fec4cc46f1a90d978ebf441113061"
 
 "@types/lodash@4.14.74":
   version "4.14.74"
