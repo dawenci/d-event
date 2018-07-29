@@ -12,7 +12,7 @@ export default class Events {
      * @returns
      * @memberof Events
      */
-    on(name: any, callback: any, context: any): this;
+    on(name: any, callback: any, context?: any): this;
     /**
      * 移除一个或者多个事件处理器，参数越齐全，移除的范围越精准（小）
      * 1. 三个参数，移除 context 上的指定 name 的 callback 对应的事件
@@ -25,8 +25,8 @@ export default class Events {
      * @returns
      * @memberof Events
      */
-    off(name: any, callback: any, context: any): this;
-    trigger(name: any): this;
+    off(name: any, callback: any, context?: any): this;
+    trigger(name: any, ...rest: any[]): this;
     /**
      * `on` 的 IOC 版本，便于后续解绑
      *
@@ -37,7 +37,7 @@ export default class Events {
      * @memberof Events
      */
     listenTo(target: any, name: any, callback?: any): this;
-    stopListening(obj: any, name: any, callback: any): this;
-    once(name: any, callback: any, context: any): this;
+    stopListening(obj: any, name?: any, callback?: any): this;
+    once(name: any, callback: any, context?: any): this;
     listenToOnce(obj: any, name: any, callback: any): this;
 }

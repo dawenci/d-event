@@ -253,7 +253,7 @@ export default class Events {
    * @returns
    * @memberof Events
    */
-  public on(name, callback, context) {
+  public on(name, callback, context?) {
     // 使用 onIteratee 统一化绑定事件
     this.__events__ = iterateEvents(onIteratee, this.__events__ || {}, name, callback, {
       context,
@@ -284,7 +284,7 @@ export default class Events {
    * @returns
    * @memberof Events
    */
-  off(name, callback, context) {
+  off(name, callback, context?) {
     if (!this.__events__) return this
 
     // 使用 offIteratee 统一、批量解除事件绑定
@@ -297,15 +297,16 @@ export default class Events {
   }
 
   // 激发事件
-  trigger(name) {
+  trigger(name, ...rest: any[]) {
     if (!this.__events__) return this
 
     // rest 参数列表
-    let length = Math.max(0, arguments.length - 1)
-    let args = Array(length)
-    for (let i = 0; i < length; i++) args[i] = arguments[i + 1]
+    // let length = Math.max(0, arguments.length - 1)
+    // let args = Array(length)
+    // for (let i = 0; i < length; i++) args[i] = arguments[i + 1]
 
-    iterateEvents(triggerIteratee, this.__events__, name, void 0, args)
+    // iterateEvents(triggerIteratee, this.__events__, name, void 0, args)
+    iterateEvents(triggerIteratee, this.__events__, name, void 0, rest)
     return this
   }
 
@@ -366,7 +367,7 @@ export default class Events {
   }
 
   // 停止监听指定事件或者所有监听的对象
-  stopListening(obj, name, callback) {
+  stopListening(obj, name?, callback?) {
     let listeningTo = this.__listeningTo__
     if (!listeningTo) return this
 
@@ -390,7 +391,7 @@ export default class Events {
   }
 
   // 绑定一次性事件
-  once(name, callback, context) {
+  once(name, callback, context?) {
     // Map the event into a `{event: once}` object.
     let events = iterateEvents(onceMap, {}, name, callback, bind(this.off, this))
     if (typeof name === 'string' && (context === undefined || context === null)) {
