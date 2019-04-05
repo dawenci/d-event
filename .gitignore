@@ -74,6 +74,3 @@ typings/
 
 # rollup-plugin-typescript2 临时文件
 .rpt2_cache
-
-# dist 目录不追踪
-dist
