@@ -1,4 +1,4 @@
-export default class Events {
+export default class DEvent {
     private __events__?;
     private __listenId__?;
     private __listeners__?;

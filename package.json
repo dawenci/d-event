@@ -1,10 +1,10 @@
 {
-  "name": "d-events",
+  "name": "d-event",
   "version": "1.0.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "browser": "dist/d-events.js",
+  "browser": "dist/d-event.js",
   "types": "types/index.d.ts",
   "scripts": {
     "dev": "rollup -c rollup.config.js -w",

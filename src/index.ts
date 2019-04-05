@@ -227,7 +227,7 @@ function trigger(events: any[], args: any[]) {
 // 私有全局变量，用来给 listeners 和 listenees 共享使用.
 let _listening
 
-export default class Events {
+export default class DEvent {
   // 记录实践绑定
   // 只有需要的时候才生成
   private __events__?: any
@@ -466,4 +466,4 @@ class Listening {
   }
 }
 
-Listening.prototype.on = Events.prototype.on
+Listening.prototype.on = DEvent.prototype.on

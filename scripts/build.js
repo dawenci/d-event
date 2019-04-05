@@ -153,7 +153,7 @@ function buildUMDDev() {
       return bundle.generate({
         format: 'umd',
         banner: banner,
-        name: 'DEvents'
+        name: 'DEvent'
       })
     })
     .then(({ code }) => {
@@ -189,7 +189,7 @@ function buildUMDProd() {
     .then(function(bundle) {
       return bundle.generate({
         format: 'umd',
-        name: 'DEvents',
+        name: 'DEvent',
         banner: banner
       })
     })

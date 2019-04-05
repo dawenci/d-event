@@ -227,8 +227,8 @@ function trigger(events, args) {
 }
 // 私有全局变量，用来给 listeners 和 listenees 共享使用.
 var _listening;
-var Events = /** @class */ (function () {
-    function Events() {
+var DEvent = /** @class */ (function () {
+    function DEvent() {
     }
     /**
      * 绑定事件
@@ -239,7 +239,7 @@ var Events = /** @class */ (function () {
      * @returns
      * @memberof Events
      */
-    Events.prototype.on = function (name, callback, context) {
+    DEvent.prototype.on = function (name, callback, context) {
         // 使用 onIteratee 统一化绑定事件
         this.__events__ = iterateEvents(onIteratee, this.__events__ || {}, name, callback, {
             context: context,
@@ -267,7 +267,7 @@ var Events = /** @class */ (function () {
      * @returns
      * @memberof Events
      */
-    Events.prototype.off = function (name, callback, context) {
+    DEvent.prototype.off = function (name, callback, context) {
         if (!this.__events__)
             return this;
         // 使用 offIteratee 统一、批量解除事件绑定
@@ -278,7 +278,7 @@ var Events = /** @class */ (function () {
         return this;
     };
     // 激发事件
-    Events.prototype.trigger = function (name) {
+    DEvent.prototype.trigger = function (name) {
         var rest = [];
         for (var _i = 1; _i < arguments.length; _i++) {
             rest[_i - 1] = arguments[_i];
@@ -302,7 +302,7 @@ var Events = /** @class */ (function () {
      * @returns
      * @memberof Events
      */
-    Events.prototype.listenTo = function (target, name, callback) {
+    DEvent.prototype.listenTo = function (target, name, callback) {
         if (!target)
             return this;
         // 监听的目标的 ID
@@ -345,7 +345,7 @@ var Events = /** @class */ (function () {
         return this;
     };
     // 停止监听指定事件或者所有监听的对象
-    Events.prototype.stopListening = function (obj, name, callback) {
+    DEvent.prototype.stopListening = function (obj, name, callback) {
         var listeningTo = this.__listeningTo__;
         if (!listeningTo)
             return this;
@@ -366,7 +366,7 @@ var Events = /** @class */ (function () {
         return this;
     };
     // 绑定一次性事件
-    Events.prototype.once = function (name, callback, context) {
+    DEvent.prototype.once = function (name, callback, context) {
         // Map the event into a `{event: once}` object.
         var events = iterateEvents(onceMap, {}, name, callback, bind(this.off, this));
         if (typeof name === 'string' && (context === undefined || context === null)) {
@@ -375,14 +375,14 @@ var Events = /** @class */ (function () {
         return this.on(events, callback, context);
     };
     // once 的 IOC 版本
-    Events.prototype.listenToOnce = function (obj, name, callback) {
+    DEvent.prototype.listenToOnce = function (obj, name, callback) {
         // Map the event into a `{event: once}` object.
         var events = iterateEvents(onceMap, {}, name, callback, bind(this.stopListening, this, obj));
         return this.listenTo(obj, events);
     };
-    return Events;
+    return DEvent;
 }());
-export default Events;
+export default DEvent;
 // Listening 类，用来维护某个事件对另一个事件对象的所有监听
 // 用于记录一个 Listening，追踪绑定、并在回调全部 offed 之后清理内存。
 var Listening = /** @class */ (function () {
@@ -435,4 +435,4 @@ var Listening = /** @class */ (function () {
     };
     return Listening;
 }());
-Listening.prototype.on = Events.prototype.on;
+Listening.prototype.on = DEvent.prototype.on;

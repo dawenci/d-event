@@ -15,13 +15,13 @@ export default {
     {
       file: pkg.browser,
       format: 'umd',
-      name: 'DEvents',
+      name: 'DEvent',
       sourcemap: false
     },
     {
       file: pkg.browser.replace('.js', '.min.js'),
       format: 'umd',
-      name: 'DEvents',
+      name: 'DEvent',
       sourcemap: false
     }
   ],
